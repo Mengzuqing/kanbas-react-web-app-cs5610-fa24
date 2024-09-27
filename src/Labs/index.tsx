@@ -10,6 +10,13 @@ export default function Labs() {
       <div id="wd-lab1">
         <h1> Zuqing Meng</h1>
         <h1> Labs</h1>
+          {/* Adding the GitHub repository link */}
+      <p>
+        <a id="wd-github" href="https://github.com/Mengzuqing/kanbas-react-web-app-cs5610-fa24" target="_blank" rel="noreferrer noopener">
+          View my GitHub repository
+        </a>
+      </p>
+      
         <TOC/>
         <Routes>
 
