@@ -1,3 +1,5 @@
+
+
 import { Link } from "react-router-dom";
 export default function Dashboard() {
   return (
@@ -6,16 +8,18 @@ export default function Dashboard() {
       <h2 id="wd-dashboard-published">Published Courses (12)</h2> <hr />
       <div id="wd-dashboard-courses">
         <div className="wd-dashboard-course">
-          <img src="/images/reactjs.jpg" width={200} />
+          {/* Added alt attribute */}
+          <img src="/images/reactjs.jpg" width={200} alt="React JS course image" />
           <div>
             <Link className="wd-dashboard-course-link"
                   to="/Kanbas/Courses/1234/Home"> 
                   {" "}
                   CS1234 React JS 
                   {" "}
-                  </Link>
+            </Link>
             <p className="wd-dashboard-course-title">
-              Full Stack software developer </p>
+              Full Stack software developer 
+            </p>
             <Link to="/Kanbas/Courses/1234/Home"> Go </Link>
           </div>
         </div>
@@ -23,4 +27,5 @@ export default function Dashboard() {
         <div className="wd-dashboard-course"> ... </div>
       </div>
     </div>
-);}
+  );
+}

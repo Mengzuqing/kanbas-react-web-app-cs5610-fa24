@@ -101,17 +101,14 @@ export default function AssignmentEditor() {
           <td>
           </td>
           <td>
-          <td align="left" valign="top">
+            
          
           <label htmlFor="wd-assign-to">Assign</label>
-          
        
           <label htmlFor="wd-assign-to" style={{ display: "inline", marginLeft: "5px" }}>Assign to</label><br />
-          </td>
         
           <input id="wd-assign-to" type="text" value="Everyone" /><br /><br />
           </td>
-          
         </tr>
 
         

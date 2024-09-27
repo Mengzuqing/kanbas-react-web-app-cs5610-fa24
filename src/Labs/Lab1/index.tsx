@@ -131,7 +131,7 @@
               <br />
               Loading a local image:
               <br />
-              <img id="wd-teslabot" src="images/teslabot.jpg" height="200px" />
+              <img id="wd-teslabot" src="images/teslabot.jpg" height="200px" alt="Teslabot image"/>
             </div>
 
               <div id="wd-forms">
@@ -273,3 +273,6 @@
       );
     }
   
+
+
+    
