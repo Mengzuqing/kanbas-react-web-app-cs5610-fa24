@@ -16,7 +16,7 @@ export default function Labs() {
           View my GitHub repository
         </a>
       </p>
-      
+
         <TOC/>
         <Routes>
 
@@ -24,6 +24,7 @@ export default function Labs() {
         <Route path="Lab1" element={<Lab1 />} />
         <Route path="Lab2" element={<Lab2 />} />
         <Route path="Lab3" element={<Lab3 />} />
+        
         </Routes>
         
  
