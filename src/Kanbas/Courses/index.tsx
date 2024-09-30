@@ -4,6 +4,7 @@ import Modules from "./Modules";
 import Home from "./Home";
 import Assignments from "./Assignments";
 import AssignmentEditor from "./Assignments/Editor";
+import React from 'react';
 
 export default function Courses() {
     return (
