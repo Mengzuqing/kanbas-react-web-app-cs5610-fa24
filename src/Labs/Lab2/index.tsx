@@ -12,13 +12,31 @@ import Zindex from "./Zindex";
 import Float from "./Float";
 import GridLayout from "./GridLayout";
 import Flex from "./Flex";
+import ReactIconsSampler from "./ReactIcons";
+import BootstrapGrids from "./BootstrapGrids";
+import ScreenSizeLabel from "./ScreenSizeLabel";
+import BootstrapTables from "./BootstrapTables";
+import BootstrapLists from "./BootstrapLists";
+import BootstrapForm from "./BootstrapForms";
+import BootstrapForms from "./BootstrapForms";
+import BootstrapNavigation from "./BootstrapNavigation";
 
 
   export default function Lab2() {
     return (
-      <div id="wd-lab2">
+
+        <div className="container">
+      <h2>Lab 2 - Cascading Style Sheets</h2>
+      <h3>Styling with the STYLE attribute</h3>
+     
+
+      {/*
+        <div id="wd-lab2">
         <h2>Lab 2 - Cascading Style Sheets</h2>
-        <h3>Styling with the STYLE attribute</h3>
+        <h3>Styling with the STYLE attribute</h3> 
+        </div>
+        */}
+
         <p>
           Style attribute allows configuring look and feel
           right on the element. Although it's very convenient
@@ -34,17 +52,16 @@ import Flex from "./Flex";
         <div id="wd-css-id-selectors">
             <h3>ID selectors</h3>
             <p id="wd-id-selector-1">
-    Instead of changing the look and feel of all the 
-    elements of the same name, e.g., P, we can refer to a specific element by its ID
+            Instead of changing the look and feel of all the elements of the same 
+            name, e.g., P, we can refer to a specific element by its ID
             </p>
             <p id="wd-id-selector-2">
-    Here's another paragraph using a different ID and a different look and
-            feel
+            Here's another paragraph using a different ID and a different look and feel
             </p>
         </div>
-              {/* Selecting content with class selectors */}
-       
 
+              {/* Selecting content with class selectors */}
+    
         <div id="wd-css-class-selectors">
             <h3>Class selectors</h3>
             <p className="wd-class-selector">
@@ -52,8 +69,9 @@ import Flex from "./Flex";
             </p>
             <h4 className="wd-class-selector">
             This heading has same style as paragraph above
-            </h4>
+            </h4> 
         </div>
+        
 
              {/* Selecting content based on the document structure*/}
 
@@ -117,64 +135,65 @@ import Flex from "./Flex";
          
 
 
-          {/* Styling borders  */}
+        {/* Styling borders  */}
                 <div>
-                <Borders/>
-                </div>
-            
+                <Borders/>           
 
-         {/* Styling paddings */}
+        {/* Styling paddings */}
+                <Padding/>              
 
-                <div>
-                <Padding/>
-                </div>
-            
-
-
-         {/* Styling margins  */}
-                <div>
+        {/* Styling margins  */}
                 <Margins/>
-                </div>
-            
-
+               
         {/* Styling corners  */}
-
-                <div>
                 <Corners/>
-                </div>
-            
-
-         {/* Styling dimensions*/}
-                <div>
+              
+        {/* Styling dimensions*/}
                 <Dimensions/>
-                </div>
-
-        {/* Styling  relative position  */}
-                <div>
+             
+        {/* Styling  relative position  */} 
                 <Positions />
-                </div>
-
+               
         {/* Styling z-index */}
-                <div>
                 <Zindex />
-                </div>
-       
-        {/*  Floating Images and Content */}
-                <div>
-                <Float/>
-                </div>
                  
+        {/*  Floating Images and Content */}
+                <Float/>
+               
         {/*  Laying out content in a grid */}
-                 <div>
                 <GridLayout/>
-                </div>
-
+                
         {/*  Laying out content in a grid */}
-                <div>
                 <Flex/>
-                </div>
-        
-       
+               
+        {/*  Laying out content in a grid */}
+                <ReactIconsSampler/>
+                 
+        {/*   Laying out content with grids */}
+                <BootstrapGrids/>
+
+        {/*  Hiding and showing responsive content */}
+                <ScreenSizeLabel/>
+
+        {/* Styling tables */}
+                <BootstrapTables/>
+
+         {/* Styling Lists and Styling a List of Hyperlinks */}
+                <BootstrapLists/>
+
+         {/* Basic Form Styling / Dropdowns / Switches / Sliders */}
+                <BootstrapForms/>
+            
+         {/* Navigating with Tabs */}
+                 <BootstrapNavigation/>
+
+
+
+
+        <br />
+        <br />
+        <br />
+                
 
 
 
@@ -185,9 +204,8 @@ import Flex from "./Flex";
 
 
 
-
-       
-     </div>
+    </div>
+ </div>
 
 
      

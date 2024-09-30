@@ -14,6 +14,8 @@ export default function BackgroundColores(){
           </span>
         </p>
       </div>
+
+      
     );
 }
 

@@ -4,11 +4,12 @@ import Lab1 from "./Lab1";
 import Lab2 from "./Lab2";
 import Lab3 from "./Lab3";
 import React from 'react';
+import Kanbas from "../Kanbas";
 
 
 export default function Labs() {
     return (
-      <div id="wd-lab1">
+      <div className="container">
         <h1> Zuqing Meng</h1>
         <h1> Labs</h1>
           {/* Adding the GitHub repository link */}
@@ -21,10 +22,11 @@ export default function Labs() {
         <TOC/>
         <Routes>
 
-          <Route path="/" element={<Navigate to="Lab1" />} />
+        <Route path="/" element={<Navigate to="Lab1" />} />
         <Route path="Lab1" element={<Lab1 />} />
         <Route path="Lab2" element={<Lab2 />} />
         <Route path="Lab3" element={<Lab3 />} />
+        <Route path="Kanbas" element={<Kanbas />} />
         
         </Routes>
         

@@ -1,30 +1,256 @@
-
-
 import { Link } from "react-router-dom";
+import React from "react";
+
 export default function Dashboard() {
   return (
     <div id="wd-dashboard">
-      <h1 id="wd-dashboard-title">Dashboard</h1> <hr />
-      <h2 id="wd-dashboard-published">Published Courses (12)</h2> <hr />
-      <div id="wd-dashboard-courses">
-        <div className="wd-dashboard-course">
-          {/* Added alt attribute */}
-          <img src="/images/reactjs.jpg" width={200} alt="React JS course image" />
-          <div>
-            <Link className="wd-dashboard-course-link"
-                  to="/Kanbas/Courses/1234/Home"> 
-                  {" "}
-                  CS1234 React JS 
-                  {" "}
-            </Link>
-            <p className="wd-dashboard-course-title">
-              Full Stack software developer 
-            </p>
-            <Link to="/Kanbas/Courses/1234/Home"> Go </Link>
+      {/* Dashboard Title */}
+      <h1 id="wd-dashboard-title">Dashboard</h1>
+      <hr />
+      <h2 id="wd-dashboard-published">Published Courses (12)</h2>
+      <hr />
+
+      {/* Dashboard Courses */}
+      <div id="wd-dashboard-courses" className="container-fluid">
+        <div className="row row-cols-1 row-cols-sm-2 row-cols-md-3 row-cols-lg-4 g-4">
+          {/* Card 1 */}
+          <div className="wd-dashboard-course col" style={{ minWidth: "250px", maxWidth: "270px" }}>
+            <div className="card rounded-3 overflow-hidden">
+              <Link
+                className="wd-dashboard-course-link text-decoration-none text-dark"
+                to="/Kanbas/Courses/1234/Home"
+              >
+                <img
+                  src="/images/reactjs.jpg"
+                  alt="Course Thumbnail"
+                  width="100%"
+                  height={160}
+                />
+                <div className="card-body"  style={{ fontSize: '10px' }}>
+                  <h5 className="wd-dashboard-course-title card-title">
+                    CS4450 12631 Web Development...
+                  </h5>
+                 
+                
+                  <h6 className="card-subtitle mb-2 text-body-secondary">
+                  CS4550.12631.202410
+                  </h6>
+                 
+
+                  <p className="card-text"><small className="text-body-secondary" 
+                    style={{ fontSize: '11px' }}>
+                    202410_1 Fall 2024 Semester Full Team
+                  </small></p>
+
+                  <button className="btn btn-primary">Go</button>
+                </div>
+              </Link>
+            </div>
           </div>
+
+          {/* Card 2 */}
+          <div className="wd-dashboard-course col" style={{ minWidth: "250px", maxWidth: "270px" }}>
+            <div className="card rounded-3 overflow-hidden">
+              <Link
+                className="wd-dashboard-course-link text-decoration-none text-dark"
+                to="/Kanbas/Courses/5678/Home"
+              >
+                <img
+                  src="/images/reactjs.jpg"
+                  alt="Course Thumbnail"
+                  width="100%"
+                  height={160}
+                />
+                <div className="card-body">
+                  <h5 className="wd-dashboard-course-title card-title">
+                    CS4450 19753 Web Development...
+                  </h5>
+                
+                  <h6 className="card-subtitle mb-2 text-body-secondary">
+                     CS4550.19753.202410
+                  </h6>
+                 
+
+                  <p className="card-text"><small className="text-body-secondary" 
+                    style={{ fontSize: '11px' }}>
+                    202410_1 Fall 2024 Semester Full Team
+                  </small></p>
+
+                  <button className="btn btn-primary">Go</button>
+                </div>
+              </Link>
+            </div>
+          </div>
+
+          {/* Card 3  */}
+          <div className="wd-dashboard-course col" style={{ minWidth: "250px", maxWidth: "270px" }}>
+            <div className="card rounded-3 overflow-hidden">
+              <Link
+                className="wd-dashboard-course-link text-decoration-none text-dark"
+                to="/Kanbas/Courses/91011/Home"
+              >
+                <img
+                  src="/images/reactjs.jpg"
+                  alt="Course Thumbnail"
+                  width="100%"
+                  height={160}
+                />
+                <div className="card-body">
+                  <h5 className="wd-dashboard-course-title card-title">
+                  CS5610 11550 Web Development...
+                  </h5>
+
+                  <h6 className="card-subtitle mb-2 text-body-secondary">
+                  CS5610.11550.202410
+                  </h6>
+
+                  <p className="card-text"><small className="text-body-secondary" 
+                    style={{ fontSize: '11px' }}>
+                    202410_1 Fall 2024 Semester Full Team
+                  </small></p>
+
+                  <button className="btn btn-primary">Go</button>
+                </div>
+              </Link>
+            </div>
+          </div>
+
+          {/* Card 4  */}
+          <div className="wd-dashboard-course col" style={{ minWidth: "250px", maxWidth: "270px" }}>
+            <div className="card rounded-3 overflow-hidden">
+              <Link
+                className="wd-dashboard-course-link text-decoration-none text-dark"
+                to="/Kanbas/Courses/1112/Home"
+              >
+                <img
+                  src="/images/reactjs.jpg"
+                  alt="Course Thumbnail"
+                  width="100%"
+                  height={160}
+                />
+                <div className="card-body">
+                  <h5 className="wd-dashboard-course-title card-title">
+                  CS5610 17387 WebDevelopment...
+                  </h5>
+                
+                  <h6 className="card-subtitle mb-2 text-body-secondary">
+                  CS5610.17387.202410
+                  </h6>
+
+                  <p className="card-text"><small className="text-body-secondary" 
+                    style={{ fontSize: '11px' }}>
+                    202410_1 Fall 2024 Semester Full Team
+                  </small></p>
+
+
+                  <button className="btn btn-primary">Go</button>
+                </div>
+              </Link>
+            </div>
+          </div>
+
+         {/* Card 5 */}
+          <div className="wd-dashboard-course col" style={{ minWidth: "250px", maxWidth: "270px" }}>
+            <div className="card rounded-3 overflow-hidden">
+              <Link
+                className="wd-dashboard-course-link text-decoration-none text-dark"
+                to="/Kanbas/Courses/1112/Home"
+              >
+                <img
+                  src="/images/reactjs.jpg"
+                  alt="Course Thumbnail"
+                  width="100%"
+                  height={160}
+                />
+                <div className="card-body">
+                  <h5 className="wd-dashboard-course-title card-title">
+                  CS5610 17387 WebDevelopment ...
+                  </h5>
+                 
+                  <h6 className="card-subtitle mb-2 text-body-secondary">
+                  CS5610.17387.202410
+                  </h6>
+                    
+                 
+                  <p className="card-text"><small className="text-body-secondary" 
+                    style={{ fontSize: '11px' }}>
+                    202410_1 Fall 2024 Semester Full Team
+                  </small></p>
+
+                  <button className="btn btn-primary">Go</button>
+                </div>
+              </Link>
+            </div>
+          </div>
+          {/* Card 6  */}
+          <div className="wd-dashboard-course col" style={{ minWidth: "250px", maxWidth: "270px" }}>
+            <div className="card rounded-3 overflow-hidden">
+              <Link
+                className="wd-dashboard-course-link text-decoration-none text-dark"
+                to="/Kanbas/Courses/1112/Home"
+              >
+                <img
+                  src="/images/reactjs.jpg"
+                  alt="Course Thumbnail"
+                  width="100%"
+                  height={160}
+                />
+                <div className="card-body">
+                  <h5 className="wd-dashboard-course-title card-title">
+                  CS5610 17387 WebDevelopment...
+                  </h5>
+              
+                  <h6 className="card-subtitle mb-2 text-body-secondary">
+                  CS5610.17387.202410
+                  </h6>
+     
+                  <p className="card-text"><small className="text-body-secondary" 
+                    style={{ fontSize: '11px' }}>
+                    202410_1 Fall 2024 Semester Full Team
+                  </small></p>
+
+                  <button className="btn btn-primary">Go</button>
+                </div>
+              </Link>
+            </div>
+          </div>
+
+
+          {/* Card 7  */}
+          <div className="wd-dashboard-course col" style={{ minWidth: "250px", maxWidth: "270px" }}>
+            <div className="card rounded-3 overflow-hidden">
+              <Link
+                className="wd-dashboard-course-link text-decoration-none text-dark"
+                to="/Kanbas/Courses/1112/Home"
+              >
+                <img
+                  src="/images/reactjs.jpg"
+                  alt="Course Thumbnail"
+                  width="100%"
+                  height={160}
+                />
+                <div className="card-body">
+                  <h5 className="wd-dashboard-course-title card-title">
+                  CS5610 17387 WebDevelopment 
+                  </h5>
+                  <div className="wd-dashboard-course col" style={{ width: "300px" }}>...</div>
+            
+                  <h6 className="card-subtitle mb-2 text-body-secondary">
+                  CS5610.17387.202410
+                  </h6>
+
+                  <p className="card-text"><small className="text-body-secondary" 
+                    style={{ fontSize: '11px' }}>
+                    202410_1 Fall 2024 Semester Full Team
+                  </small></p>
+
+                  <button className="btn btn-primary">Go</button>
+                </div>
+              </Link>
+            </div>
+          </div>
+       
         </div>
-        <div className="wd-dashboard-course"> ... </div>
-        <div className="wd-dashboard-course"> ... </div>
       </div>
     </div>
   );
