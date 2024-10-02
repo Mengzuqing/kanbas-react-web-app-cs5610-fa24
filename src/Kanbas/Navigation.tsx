@@ -40,18 +40,18 @@ export default function KanbasNavigation() {
 
       <Link to="/Kanbas/Calendar" id="wd-calendar-link" 
         className="list-group-item text-center border-0 bg-black text-white">
-      <IoCalendarOutline className="fs-1 text-white" /><br />
+      <IoCalendarOutline className="fs-1 text-danger" /><br />
         Calendar</Link>
 
       <Link to="/Kanbas/Inbox" id="wd-inbox-link" 
       className="list-group-item text-center border-0 bg-black text-white">
-      <FaInbox className="fs-1 text-white" />
+      <FaInbox className="fs-1 text-danger" />
       <br />
         Inbox
       </Link>
 
       <Link to="/Kanbas/Labs" id="wd-labs-link" className="list-group-item text-center border-0 bg-black text-white">
-        <LiaCogSolid className="fs-1 text-white" />
+        <LiaCogSolid className="fs-1 text-danger" />
         <br />
         Labs
       </Link>

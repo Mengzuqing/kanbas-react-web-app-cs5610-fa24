@@ -7,7 +7,7 @@ export default function Dashboard() {
       {/* Dashboard Title */}
       <h1 id="wd-dashboard-title">Dashboard</h1>
       <hr />
-      <h2 id="wd-dashboard-published">Published Courses (12)</h2>
+      <h2 id="wd-dashboard-published">Published Courses (7)</h2>
       <hr />
 
       {/* Dashboard Courses */}
@@ -18,22 +18,21 @@ export default function Dashboard() {
             <div className="card rounded-3 overflow-hidden">
               <Link
                 className="wd-dashboard-course-link text-decoration-none text-dark"
-                to="/Kanbas/Courses/1234/Home"
+                to="/Kanbas/Courses/5678/Home"
               >
                 <img
-                  src="/images/reactjs.jpg"
+                  src="/images/bule.jpg"
                   alt="Course Thumbnail"
                   width="100%"
                   height={160}
                 />
-                <div className="card-body"  style={{ fontSize: '10px' }}>
+                <div className="card-body">
                   <h5 className="wd-dashboard-course-title card-title">
                     CS4450 12631 Web Development...
                   </h5>
-                 
                 
                   <h6 className="card-subtitle mb-2 text-body-secondary">
-                  CS4550.12631.202410
+                     CS4550.12631.202410
                   </h6>
                  
 
@@ -56,7 +55,7 @@ export default function Dashboard() {
                 to="/Kanbas/Courses/5678/Home"
               >
                 <img
-                  src="/images/reactjs.jpg"
+                  src="/images/deepbule.jpg"
                   alt="Course Thumbnail"
                   width="100%"
                   height={160}
@@ -90,7 +89,7 @@ export default function Dashboard() {
                 to="/Kanbas/Courses/91011/Home"
               >
                 <img
-                  src="/images/reactjs.jpg"
+                  src="/images/green2.jpg"
                   alt="Course Thumbnail"
                   width="100%"
                   height={160}
@@ -123,7 +122,7 @@ export default function Dashboard() {
                 to="/Kanbas/Courses/1112/Home"
               >
                 <img
-                  src="/images/reactjs.jpg"
+                  src="/images/green.jpg"
                   alt="Course Thumbnail"
                   width="100%"
                   height={160}
@@ -157,7 +156,7 @@ export default function Dashboard() {
                 to="/Kanbas/Courses/1112/Home"
               >
                 <img
-                  src="/images/reactjs.jpg"
+                  src="/images/pink.jpg"
                   alt="Course Thumbnail"
                   width="100%"
                   height={160}
@@ -190,7 +189,7 @@ export default function Dashboard() {
                 to="/Kanbas/Courses/1112/Home"
               >
                 <img
-                  src="/images/reactjs.jpg"
+                  src="/images/purple.jpg"
                   alt="Course Thumbnail"
                   width="100%"
                   height={160}
@@ -224,16 +223,16 @@ export default function Dashboard() {
                 to="/Kanbas/Courses/1112/Home"
               >
                 <img
-                  src="/images/reactjs.jpg"
+                  src="/images/red.jpg"
                   alt="Course Thumbnail"
                   width="100%"
                   height={160}
                 />
                 <div className="card-body">
                   <h5 className="wd-dashboard-course-title card-title">
-                  CS5610 17387 WebDevelopment 
+                  CS5610 17387 WebDevelopment...
                   </h5>
-                  <div className="wd-dashboard-course col" style={{ width: "300px" }}>...</div>
+    
             
                   <h6 className="card-subtitle mb-2 text-body-secondary">
                   CS5610.17387.202410

@@ -2,11 +2,21 @@ import Profile from "./Profile";
 import Signin from "./Signin";
 import Signup from "./Signup";
 import { Routes, Route, Navigate } from "react-router";
+import AccountNavigation from "./Navigation";
 
 export default function Account() {
   return (
     <div id="wd-account-screen">
       <h2>Account</h2>
+        
+      {/* Main Container */}
+      <div className="row">
+        {/* Navigation Sidebar - Visible in larger screens */}
+        <div className="col-12 col-md-3 d-none d-md-block">
+          <AccountNavigation />
+        </div>
+       
+      <div className="col-12 col-md-9">
       <Routes>
         <Route path="/" element={<Navigate to="/Kanbas/Account/Signin" />} />
         <Route path="/Signin" element={<Signin />} />
@@ -14,6 +24,8 @@ export default function Account() {
         <Route path="/Signup" element={<Signup />} />
       </Routes>
 
+    </div>
+    </div>
     </div>
   );
 }
