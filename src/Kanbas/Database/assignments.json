@@ -1,0 +1,12 @@
+
+  [
+    { "_id": "A101", "title": "Propulsion Assignment", "course": "RS101", "notAvailable": "May 1 at 12:00am", "due": "May 8 at 11:59pm" },
+    { "_id": "A102", "title": "Combustion Analysis", "course": "RS101", "notAvailable": "May 9 at 12:00am", "due": "May 16 at 11:59pm" },
+    { "_id": "A103", "title": "Nozzle Design Project", "course": "RS101", "notAvailable": "May 17 at 12:00am", "due": "May 24 at 11:59pm" },
+    { "_id": "A201", "title": "Aerodynamics Quiz", "course": "RS102", "notAvailable": "May 25 at 12:00am", "due": "June 1 at 11:59pm" },
+    { "_id": "A202", "title": "Flow Analysis", "course": "RS102", "notAvailable": "June 2 at 12:00am", "due": "June 9 at 11:59pm" },
+    { "_id": "A203", "title": "Heating Analysis", "course": "RS102", "notAvailable": "June 10 at 12:00am", "due": "June 17 at 11:59pm" },
+    { "_id": "A301", "title": "Structural Design Task", "course": "RS103", "notAvailable": "June 18 at 12:00am", "due": "June 25 at 11:59pm" },
+    { "_id": "A302", "title": "Orbital Calculations", "course": "RS103", "notAvailable": "June 26 at 12:00am", "due": "July 3 at 11:59pm" },
+    { "_id": "A303", "title": "Systems Engineering Exam", "course": "RS103", "notAvailable": "July 4 at 12:00am", "due": "July 11 at 11:59pm" }
+]

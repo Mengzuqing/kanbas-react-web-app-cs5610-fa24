@@ -1,3 +1,4 @@
+import React from "react";
 import ModulesControls from "../Modules/ModulesControls";
 import { BsGripVertical } from "react-icons/bs";
 import GreenCheckmark from "../Modules/GreenCheckmark";
@@ -7,8 +8,25 @@ import LessonControlButtons from "../Modules/LessonControlButtons";
 import PercentageButton from "./PercentageButton";
 import AssignmentControls from "./AssignmentControls";
 import { FaChevronDown } from "react-icons/fa";
+import { useParams } from "react-router";
+import * as db from "../../Database";
+
+interface Assignment {
+  _id: string;
+  title: string;
+  course: string;
+  notAvailable?: string;
+  due?: string;
+}
 
 export default function Assignments() {
+  const { cid } = useParams();
+  const assignments: Assignment[] = db.assignments || [];
+
+  // Debugging output
+  console.log("Current Course ID (cid):", cid);
+  console.log("Assignments:", assignments);
+
   return (
     <div>
       <AssignmentControls />
@@ -22,7 +40,7 @@ export default function Assignments() {
               <span>ASSIGNMENTS</span>
             </div>
             <div className="d-flex align-items-center">
-              <PercentageButton/>
+              <PercentageButton />
               <FaPlus className="me-3" />
               <IoEllipsisVertical className="fs-4" />
             </div>
@@ -30,75 +48,33 @@ export default function Assignments() {
 
           {/* Lesson List */}
           <ul className="wd-lessons list-group rounded-0">
-            <li className="wd-lesson list-group-item p-3 ps-1">
-            
-              <div className="d-flex align-items-start justify-content-between">
-                {/* Icon and Title */}
-                <div className="d-flex align-items-center me-3">
-                  <BsGripVertical className="me-2 fs-3" />
-                  <FaBook className="me-2 text-success fs-4" />
-                  <div>
-
-                  <a className="wd-assignment-link" href="#/Kanbas/Courses/1234/Assignments/123">
-                    <div className="fw-bold">A1</div>
-                    </a>
-
-                    <div className="text-muted small mt-1">
-                      <span>Multiple Modules | Not available until May 6 at 12:00am | Due May 13 at 11:59pm | 100 pts</span>
+            {assignments.map((assignment) => (
+                <li key={assignment._id} className="wd-lesson list-group-item p-3 ps-1">
+                  <div className="d-flex align-items-start justify-content-between">
+                    {/* Icon and Title */}
+                    <div className="d-flex align-items-center me-3">
+                      <BsGripVertical className="me-2 fs-3" />
+                      <FaBook className="me-2 text-success fs-4" />
+                      <div>
+                        <a className="wd-assignment-link" href={`#/Kanbas/Courses/${cid}/Assignments/${assignment._id}`}>
+                          <div className="fw-bold">{assignment.title}</div>
+                        </a>
+                        <div className="text-muted small mt-1">
+                          <span>
+                            <span style={{ color:  "#B22222"  }}>Multiple Modules</span> |
+                            <strong>Not available until</strong> {assignment.notAvailable} |
+                            <strong>Due</strong> {assignment.due} | 100 pts
+                          </span>
+                        </div>
+                      </div>
+                    </div>
+                    <div className="d-flex align-items-center">
+                      <GreenCheckmark />
+                      <IoEllipsisVertical className="ms-2 fs-5" />
                     </div>
                   </div>
-                </div>
-                <div className="d-flex align-items-center">
-                  <GreenCheckmark />
-                  <IoEllipsisVertical className="ms-2 fs-5" />
-                </div>
-              </div>
-            </li>
-
-            <li className="wd-lesson list-group-item p-3 ps-1">
-              <div className="d-flex align-items-start justify-content-between">
-                <div className="d-flex align-items-center me-3">
-                  <BsGripVertical className="me-2 fs-3" />
-                  <FaBook className="me-2 text-success fs-4" />
-                  <div>
-
-                  <a className="wd-assignment-link" href="#/Kanbas/Courses/1234/Assignments/124">
-                    <div className="fw-bold">A2</div>
-                    </a>
-
-                    <div className="text-muted small mt-1">
-                      <span>Multiple Modules | Not available until May 13 at 12:00am | Due May 20 at 11:59pm | 100 pts</span>
-                    </div>
-                  </div>
-                </div>
-                <div className="d-flex align-items-center">
-                  <GreenCheckmark />
-                  <IoEllipsisVertical className="ms-2 fs-5" />
-                </div>
-              </div>
-            </li>
-
-            <li className="wd-lesson list-group-item p-3 ps-1">
-              <div className="d-flex align-items-start justify-content-between">
-                <div className="d-flex align-items-center me-3">
-                  <BsGripVertical className="me-2 fs-3" />
-                  <FaBook className="me-2 text-success fs-4" />
-                  <div>
-                  <a className="wd-assignment-link" href="#/Kanbas/Courses/1234/Assignments/125">
-                    <div className="fw-bold">A3</div>
-                    </a>
-
-                    <div className="text-muted small mt-1">
-                      <span>Multiple Modules | Not available until May 20 at 12:00am | Due May 27 at 11:59pm | 100 pts</span>
-                    </div>
-                  </div>
-                </div>
-                <div className="d-flex align-items-center">
-                  <GreenCheckmark />
-                  <IoEllipsisVertical className="ms-2 fs-5" />
-                </div>
-              </div>
-            </li>
+                </li>
+              ))}
           </ul>
         </li>
       </ul>
