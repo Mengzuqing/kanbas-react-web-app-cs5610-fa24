@@ -17,10 +17,10 @@ export default function AssignmentEditor() {
   const [assignment, setAssignment] = useState<Assignment | undefined>(undefined);
 
   useEffect(() => {
-    console.log("Assignments in Database:", assignments_data); // 输出所有作业，检查数据结构是否正确
-    console.log("Current Assignment ID (aid):", aid); // 输出当前作业 ID
+    console.log("Assignments in Database:", assignments_data); 
+    console.log("Current Assignment ID (aid):", aid); 
     const selectedAssignment = assignments_data.find((a) => a._id === aid);
-    console.log("Selected Assignment:", selectedAssignment); // 调试输出
+    console.log("Selected Assignment:", selectedAssignment); 
     setAssignment(selectedAssignment);
   }, [aid]);
 
@@ -170,4 +170,3 @@ export default function AssignmentEditor() {
     </div>
   );
 }
-

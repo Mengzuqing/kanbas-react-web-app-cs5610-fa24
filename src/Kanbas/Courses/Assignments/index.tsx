@@ -41,7 +41,7 @@ export default function Assignments() {
             </div>
             <div className="d-flex align-items-center">
               <PercentageButton />
-              <FaPlus className="me-3" />
+              <FaPlus style={{ marginLeft: "16px" }} className="me-3" />
               <IoEllipsisVertical className="fs-4" />
             </div>
           </div>

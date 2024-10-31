@@ -3,7 +3,7 @@ import { useParams } from "react-router-dom";
 import { FaUserCircle } from "react-icons/fa";
 import * as db from "../../Database";
 
-// 为 users 和 enrollments 添加接口定义
+
 interface User {
   _id: string;
   firstName: string;
@@ -21,7 +21,7 @@ interface Enrollment {
   course: string;
 }
 
-// 确保 db 中的类型
+
 interface Database {
   users: User[];
   enrollments: Enrollment[];
@@ -32,7 +32,7 @@ const database: Database =db as unknown as Database;
 export default function PeopleTable() {
   const { cid } = useParams<{ cid: string }>();
 
-  // 使用 db 并确保类型为数组
+
   const users = Array.isArray(database.users) ? database.users : [];
   const enrollments = Array.isArray(database.enrollments) ? database.enrollments : [];
 
