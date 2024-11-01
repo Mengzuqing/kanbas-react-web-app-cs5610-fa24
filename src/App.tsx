@@ -5,11 +5,15 @@ import { HashRouter, Route, Routes, Navigate} from "react-router-dom";
 //import logo from './logo.svg';
 //import './App.css';
 //import labs from './Labs/Lab1/Lab1';
+import store from "./Kanbas/store";
+import { Provider } from "react-redux";
 
 
 function App() {
   return (
     <HashRouter>
+       <Provider store={store}>
+
        <div>
         <Routes>
           <Route path="/" element={<Navigate to="Kanbas" />} />
@@ -18,6 +22,7 @@ function App() {
     
         </Routes>
     </div>
+    </Provider>
   </HashRouter>
   );
 }

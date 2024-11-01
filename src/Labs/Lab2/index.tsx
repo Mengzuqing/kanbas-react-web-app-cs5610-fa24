@@ -20,6 +20,7 @@ import BootstrapLists from "./BootstrapLists";
 import BootstrapForm from "./BootstrapForms";
 import BootstrapForms from "./BootstrapForms";
 import BootstrapNavigation from "./BootstrapNavigation";
+import TodoForm from "../Lab4/ReduxExamples/todos/TodoForm";
 
 
   export default function Lab2() {
@@ -27,7 +28,10 @@ import BootstrapNavigation from "./BootstrapNavigation";
 
         <div className="container">
       <h2>Lab 2 - Cascading Style Sheets</h2>
+      <TodoForm/>
+      
       <h3>Styling with the STYLE attribute</h3>
+
      
 
       {/*
