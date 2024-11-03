@@ -1,5 +1,4 @@
 import { createSlice } from "@reduxjs/toolkit";
-//import { account } from "../../Database";
 const initialState = {
   currentUser: null,
 };

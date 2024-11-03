@@ -1,40 +1,29 @@
-import CoursesNavigation from "./Navigation";
-import { Navigate, Route, Routes, useParams, useLocation } from "react-router";
-import Modules from "./Modules";
+import { Routes, Route, Navigate, useParams, useLocation } from "react-router";
 import Home from "./Home";
+import Modules from "./Modules";
+import CoursesNavigation from "./Navigation";
 import Assignments from "./Assignments";
 import AssignmentEditor from "./Assignments/Editor";
-import PeopleTable from "./People/Table"; // Ensure PeopleTable component is imported
-import React from "react";
 import { FaAlignJustify } from "react-icons/fa";
-import { courses } from "../Database";
+import PeopleTable from "./People/Table";
+// import { courses } from "../Database";
 
-export default function Courses({ courses }: { courses: any[]; }) {
+export default function Courses({ courses }: { courses: any }) {
   const { cid } = useParams();
-  const course = courses.find((course:any) => course._id === cid);
+  const course = courses.find((course: any) => course._id === cid);
   const { pathname } = useLocation();
-
   return (
-    <div id="wd-courses" className="container-fluid mt-3">
-      {/* Course Title with Icon */}
-      <h2 className="text-danger d-flex align-items-center">
+    <div id="wd-courses">
+      <h2 className="text-danger">
         <FaAlignJustify className="me-4 fs-4 mb-1" />
-       
         {course && course.name} &gt; {pathname.split("/")[4]}
-
-
       </h2>
       <hr />
-      
-      {/* Main Container */}
-      <div className="row">
-        {/* Navigation Sidebar - Visible in larger screens */}
-        <div className="col-12 col-md-3 d-none d-md-block">
+      <div className="d-flex">
+        <div className="d-none d-md-block">
           <CoursesNavigation />
         </div>
-
-        {/* Main Content Area */}
-        <div className="col-12 col-md-9">
+        <div className="flex-fill">
           <Routes>
             <Route path="/" element={<Navigate to="Home" />} />
             <Route path="Home" element={<Home />} />

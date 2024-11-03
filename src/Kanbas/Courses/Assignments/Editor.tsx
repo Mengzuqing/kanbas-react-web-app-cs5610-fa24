@@ -1,139 +1,226 @@
-import React, { useState, useEffect } from "react";
-import { useParams, useNavigate } from "react-router-dom";
-import { useDispatch, useSelector } from "react-redux";
+import React, { useEffect, useState } from "react";
+// import Select from "react-select";
+import { useParams, Link, useNavigate } from "react-router-dom";
+import { useSelector, useDispatch } from "react-redux";
 import { addAssignment, updateAssignment } from "./reducer";
 
-interface Assignment {
-  _id: string;
-  title: string;
-  course: string;
-  description: string;
-  points: number;
-  notAvailable: string;
-  due: string;
-  availableUntil: string;
-}
-
 export default function AssignmentEditor() {
-  const { cid, aid } = useParams<{ cid: string; aid: string }>();
+  const { aid, cid } = useParams();
   const navigate = useNavigate();
   const dispatch = useDispatch();
-  const assignments = useSelector((state: any) => state.assignmentsReducer.assignments) || [];
-
-  // 初始化作业的状态，确保所有字段都有默认值
-  const [assignment, setAssignment] = useState<Assignment>({
-    _id: "",
+  const [assignment, setAssignment] = useState({
+    _id: aid,
     title: "",
-    course: cid || "",
     description: "",
-    points: 100,
-    notAvailable: "",
-    due: "",
-    availableUntil: ""
+    points: 0,
+    dueDate: "",
+    availableDate: "",
+    untilDate: "",
+    course: cid,
   });
+  const existAssignment = useSelector((state: any) =>
+    state.assignmentsReducer.assignments.find((a: any) => a._id === aid)
+  );
 
   useEffect(() => {
-    if (aid && aid !== "new") {
-      // 查找现有作业并设置到状态
-      const existingAssignment = assignments.find((a: Assignment) => a._id === aid);
-      if (existingAssignment) {
-        setAssignment(existingAssignment);
-      }
+    if (aid !== "new" && existAssignment) {
+      setAssignment(existAssignment);
     }
-  }, [aid, assignments]);
+  }, [aid, existAssignment]);
 
-  // 处理输入变化
-  const handleInputChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
-    const { id, value } = e.target;
-    setAssignment({ ...assignment, [id]: value });
-  };
-
-  // 保存作业
-  const handleSave = () => {
-    if (aid && aid !== "new") {
-      dispatch(updateAssignment(assignment));  // 更新作业
+  const Save = () => {
+    if (aid === "new") {
+      dispatch(addAssignment(assignment));
     } else {
-      dispatch(addAssignment({ ...assignment, _id: new Date().getTime().toString() }));  // 添加新作业
+      dispatch(updateAssignment(assignment));
     }
-    navigate(`/Kanbas/Courses/${cid}/Assignments`);  // 保存后返回到作业列表
+    navigate(`/Kanbas/Courses/${cid}/Assignments`);
   };
-
-  // 取消操作
-  const handleCancel = () => {
-    navigate(`/Kanbas/Courses/${cid}/Assignments`);  // 取消后返回到作业列表
-  };
-
   return (
-    <div>
-      <label htmlFor="title">
-        <strong>Assignment Name</strong>
-      </label>
-      <input
-        id="title"
-        value={assignment.title}
-        onChange={handleInputChange}
-        style={{ width: "100%", marginBottom: "20px" }}
-      />
+    <div id="wd-assignments-editor">
+      <div className="mb-3">
+        <label htmlFor="wd-assignment-name" className="form-label">
+          <strong>Assignment Name</strong>
+        </label>
+        <input
+          id="wd-assignment-name"
+          className="form-control"
+          value={assignment.title}
+          onChange={(e) =>
+            setAssignment({ ...assignment, title: e.target.value })
+          }
+        />
+      </div>
 
-      <label htmlFor="description">
-        <strong>Description</strong>
-      </label>
-      <textarea
-        id="description"
-        value={assignment.description}
-        onChange={handleInputChange}
-        style={{ width: "100%", height: "100px", marginBottom: "20px" }}
-      />
+      <div className="mb-3">
+        <textarea
+          className="form-control"
+          id="wd-description"
+          rows={10}
+          value={assignment.description}
+          onChange={(e) =>
+            setAssignment({ ...assignment, description: e.target.value })
+          }
+        ></textarea>
+      </div>
 
-      <label htmlFor="points">
-        <strong>Points</strong>
-      </label>
-      <input
-        id="points"
-        type="number"
-        value={assignment.points}
-        onChange={handleInputChange}
-        style={{ width: "100%", marginBottom: "20px" }}
-      />
+      <div className="row mb-3">
+        <label htmlFor="wd-points" className="col-sm-2 col-form-label">
+          Points
+        </label>
+        
+        <div className="col-sm-10">
+          <input
+            id="wd-points"
+            type="number"
+            className="form-control"
+            value={assignment.points}
+            onChange={(e) =>
+              setAssignment({ ...assignment, points: parseInt(e.target.value) })
+            }
+          />
+        </div>
+      </div>
 
-      <label htmlFor="due">
-        <strong>Due Date</strong>
-      </label>
-      <input
-        id="due"
-        type="datetime-local"
-        value={assignment.due}
-        onChange={handleInputChange}
-        style={{ width: "100%", marginBottom: "20px" }}
-      />
+      <div className="row mb-3">
+        <label htmlFor="wd-group" className="col-sm-2 col-form-label">
+          Assignment Group
+        </label>
+        <div className="col-sm-10">
+          <select id="wd-group" className="form-select">
+            <option value="assignments">Assignments</option>
+          </select>
+        </div>
+      </div>
 
-      <label htmlFor="notAvailable">
-        <strong>Available From</strong>
-      </label>
-      <input
-        id="notAvailable"
-        type="datetime-local"
-        value={assignment.notAvailable}
-        onChange={handleInputChange}
-        style={{ width: "100%", marginBottom: "20px" }}
-      />
+      <div className="row mb-3">
+        <label
+          htmlFor="wd-display-grade-as"
+          className="col-sm-2 col-form-label"
+        >
+          Display Grade as
+        </label>
+        <div className="col-sm-10">
+          <select id="wd-display-grade-as" className="form-select">
+            <option value="percentage">Percentage</option>
+          </select>
+        </div>
+      </div>
 
-      <label htmlFor="availableUntil">
-        <strong>Available Until</strong>
-      </label>
-      <input
-        id="availableUntil"
-        type="datetime-local"
-        value={assignment.availableUntil}
-        onChange={handleInputChange}
-        style={{ width: "100%", marginBottom: "20px" }}
-      />
+      <fieldset className="row mb-3">
+        <legend className="col-form-label col-sm-2 pt-0">
+          Submission Type
+        </legend>
+        <div
+          className="col-sm-10"
+          style={{
+            border: "1px solid #c3c3c3",
+            borderRadius: "6px",
+            padding: "20px",
+          }}
+        >
+          <select id="wd-submission-type" className="form-select mb-3">
+            <option value="online">Online</option>
+          </select>
+          <label className="fw-bold">Online Entry Options</label>
+          <div className="form-check">
+            <input
+              className="form-check-input"
+              type="checkbox"
+              id="wd-text-entry"
+            />
+            <label className="form-check-label" htmlFor="wd-text-entry">
+              Text Entry
+            </label>
+          </div>
+          <div className="form-check">
+            <input
+              className="form-check-input"
+              type="checkbox"
+              id="wd-website-url"
+              defaultChecked
+            />
+            <label className="form-check-label" htmlFor="wd-website-url">
+              Website URL
+            </label>
+          </div>
+        </div>
+      </fieldset>
 
-      <div style={{ textAlign: "right", paddingTop: "20px" }}>
-        <button type="button" onClick={handleCancel} style={{ marginRight: "10px" }}>
+      <fieldset className="row mb-3">
+        <legend className="col-form-label col-sm-2 pt-0">Assign</legend>
+        <div
+          className="col-sm-10"
+          style={{
+            border: "1px solid #c3c3c3",
+            borderRadius: "6px",
+            padding: "20px",
+          }}
+        >
+          <label className="fw-bold">Assign to</label>
+          <input
+            id="wd-assign-to"
+            className="form-control mb-3"
+            value="Everyone"
+            readOnly
+          />
+
+          <label className="fw-bold">Due</label>
+          <input
+            id="wd-due-date"
+            type="datetime-local"
+            className="form-control mb-3"
+            value={assignment.dueDate}
+            onChange={(e) =>
+              setAssignment({ ...assignment, dueDate: e.target.value })
+            }
+          />
+
+          <div className="row">
+            <div className="col-md-6">
+              <label htmlFor="wd-available-from" className="fw-bold">
+                Available from
+              </label>
+              <input
+                id="wd-available-from"
+                type="datetime-local"
+                className="form-control"
+                value={assignment.availableDate}
+                onChange={(e) =>
+                  setAssignment({
+                    ...assignment,
+                    availableDate: e.target.value,
+                  })
+                }
+              />
+            </div>
+            <div className="col-md-6">
+              <label htmlFor="wd-available-until" className="fw-bold">
+                Until
+              </label>
+              <input
+                id="wd-available-until"
+                type="datetime-local"
+                className="form-control"
+                value={assignment.untilDate}
+                onChange={(e) =>
+                  setAssignment({ ...assignment, untilDate: e.target.value })
+                }
+              />
+            </div>
+          </div>
+        </div>
+      </fieldset>
+
+      <hr />
+      <div className="float-end mt-3">
+        <Link
+          to={`/Kanbas/Courses/${cid}/Assignments`}
+          className="btn btn-lg btn-secondary me-2"
+        >
           Cancel
-        </button>
-        <button type="button" onClick={handleSave}>
+        </Link>
+        <button onClick={Save} className="btn btn-lg btn-danger">
           Save
         </button>
       </div>

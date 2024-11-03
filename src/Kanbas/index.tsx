@@ -1,33 +1,31 @@
-
 import { Routes, Route, Navigate } from "react-router";
-import React from 'react'
-import "./styles.css";
 import Account from "./Account";
+import Courses from "./Courses";
 import Dashboard from "./Dashboard";
 import KanbasNavigation from "./Navigation";
-import Courses from "./Courses";
-import Home from "./Courses/Home";
-import Modules from "./Courses/Modules";
-import Assignments from "./Courses/Assignments";
-import AssignmentEditor from "./Courses/Assignments/Editor";
-import PeopleTable from "./Courses/People/Table";
-import * as db from "./Database";
+import "./styles.css";
 import { useState } from "react";
-import  ProtectedRoute from "./Account/ProtectedRoute";
-
-
-
-
+import * as db from "./Database";
+import store from "./store";
+import { Provider } from "react-redux";
+import ProtectedRoute from "./Account/ProtectedRoute";
 export default function Kanbas() {
-  const [courses, setCourses] = useState<any[]>(db.courses);
+  const [courses, setCourses] = useState(db.courses);
   const [course, setCourse] = useState<any>({
-    _id: "1234", name: "New Course", number: "New Number",
-    startDate: "2023-09-10", endDate: "2023-12-15", description: "New Description",
+    _id: "0",
+    name: "New Course",
+    number: "New Number",
+    startDate: "2023-09-10",
+    endDate: "2023-12-15",
+    image: "/images/reactjs.jpg",
+    description: "New Description",
   });
+
   const addNewCourse = () => {
-    setCourses([...courses, { ...course, _id: new Date().getTime().toString() }]);
+    const newCourse = { ...course, _id: new Date().getTime().toString() };
+    setCourses([...courses, { ...course, ...newCourse }]);
   };
-  const deleteCourse = (courseId: any) => {
+  const deleteCourse = (courseId: string) => {
     setCourses(courses.filter((course) => course._id !== courseId));
   };
   const updateCourse = () => {
@@ -42,39 +40,43 @@ export default function Kanbas() {
     );
   };
 
-
-
-
   return (
-    <div id="wd-kanbas">
-      <h1>Kanbas</h1>
-   
-               <KanbasNavigation />
-               <div className="wd-main-content-offset p-3">
-                  <Routes>
-                    <Route path="/" element={<Navigate to="Account" />} />
-                    <Route path="/Account/*" element={<Account />} />
-                    <Route path="Dashboard" element={
-                    <ProtectedRoute>
-                      <Dashboard
-                      courses={courses}
-                      course={course}
-                      setCourse={setCourse}
-                      addNewCourse={addNewCourse}
-                      deleteCourse={deleteCourse}
-                      updateCourse={updateCourse}/>
-                    </ProtectedRoute> } />
-
-                   
-                      <Route path="Courses/:cid/*" 
-                      element={<ProtectedRoute><Courses courses={courses} />
-                      </ProtectedRoute> } />
-
-
-                    <Route path="/Calendar" element={<h1>Calendar</h1>} />
-                    <Route path="/Inbox" element={<h1>Inbox</h1>} />
-                    </Routes>
-                </div>         
-    </div>
-);}
-
+    <Provider store={store}>
+      <div id="wd-kanbas">
+        <KanbasNavigation />
+        <div className="wd-main-content-offset p-3">
+          <Routes>
+            <Route path="/" element={<Navigate to="Account" />} />
+            <Route path="/Account/*" element={<Account />} />
+            <Route
+              path="Dashboard"
+              element={
+                <ProtectedRoute>
+                  <Dashboard
+                    courses={courses}
+                    course={course}
+                    setCourses={setCourses}
+                    setCourse={setCourse}
+                    addNewCourse={addNewCourse}
+                    deleteCourse={deleteCourse}
+                    updateCourse={updateCourse}
+                  />
+                </ProtectedRoute>
+              }
+            />
+            <Route
+              path="/Courses/:cid/*"
+              element={
+                <ProtectedRoute>
+                  <Courses courses={courses} />
+                </ProtectedRoute>
+              }
+            />
+            <Route path="/Calendar" element={<h1>Calendar</h1>} />
+            <Route path="/Inbox" element={<h1>Inbox</h1>} />
+          </Routes>
+        </div>
+      </div>
+    </Provider>
+  );
+}
