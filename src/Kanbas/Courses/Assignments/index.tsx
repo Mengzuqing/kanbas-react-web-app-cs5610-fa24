@@ -38,7 +38,7 @@ export default function Assignments() {
       course: cid as string,
       notAvailable: notAvailable,
       due: due,
-      points: 100,
+      points: 0,
     };
     setAssignments([...assignments, newAssignment]);
     setAssignmentName("");
