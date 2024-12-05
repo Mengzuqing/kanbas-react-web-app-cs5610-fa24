@@ -1,43 +1,18 @@
-import React from "react";
-import { useParams } from "react-router-dom";
 import { FaUserCircle } from "react-icons/fa";
-import * as db from "../../Database";
+import PeopleDetails from "./Details";
+import { Link } from "react-router-dom";
+import { useSelector } from "react-redux";
+// import { useParams } from "react-router-dom";
+// import * as db from "../../Database";
 
-
-interface User {
-  _id: string;
-  firstName: string;
-  lastName: string;
-  loginId: string;
-  section: string;
-  role: string;
-  lastActivity: string;
-  totalActivity: string;
-}
-
-interface Enrollment {
-  _id: string;
-  user: string;
-  course: string;
-}
-
-
-interface Database {
-  users: User[];
-  enrollments: Enrollment[];
-}
-
-const database: Database =db as unknown as Database;
-
-export default function PeopleTable() {
-  const { cid } = useParams<{ cid: string }>();
-
-
-  const users = Array.isArray(database.users) ? database.users : [];
-  const enrollments = Array.isArray(database.enrollments) ? database.enrollments : [];
+export default function PeopleTable({ users = [] }: { users?: any[] }) {
+  // const { cid } = useParams();
+  // const { users, enrollments } = db;
+  const { currentUser } = useSelector((state: any) => state.accountReducer);
 
   return (
     <div id="wd-people-table">
+      {currentUser.role === "ADMIN" ? <PeopleDetails /> : ""}
       <table className="table table-striped">
         <thead>
           <tr>
@@ -50,27 +25,35 @@ export default function PeopleTable() {
           </tr>
         </thead>
         <tbody>
-          {users
-            .filter((usr: User) =>
-              enrollments.some(
-                (enrollment: Enrollment) =>
-                  enrollment.user === usr._id && enrollment.course === cid
-              )
-            )
-            .map((user: User) => (
-              <tr key={user._id}>
-                <td className="wd-full-name text-nowrap">
-                  <FaUserCircle className="me-2 fs-1 text-secondary" />
-                  <span className="wd-first-name">{user.firstName}</span>{" "}
-                  <span className="wd-last-name">{user.lastName}</span>
-                </td>
-                <td className="wd-login-id">{user.loginId}</td>
-                <td className="wd-section">{user.section}</td>
-                <td className="wd-role">{user.role}</td>
-                <td className="wd-last-activity">{user.lastActivity}</td>
-                <td className="wd-total-activity">{user.totalActivity}</td>
-              </tr>
-            ))}
+          {users.map((user: any) => (
+            <tr key={user._id}>
+              <td className="wd-full-name text-nowrap">
+                {currentUser.role === "ADMIN" ? (
+                  // Case 1: ADMIN - Link to user details
+                  <Link
+                    to={`/Kanbas/Account/Users/${user._id}`}
+                    className="text-decoration-none"
+                  >
+                    <FaUserCircle className="me-2 fs-1 text-secondary" />
+                    <span className="wd-first-name">{user.firstName}</span>{" "}
+                    <span className="wd-last-name">{user.lastName}</span>
+                  </Link>
+                ) : (
+                  // Case 2: Non-ADMIN - Plain text
+                  <>
+                    <FaUserCircle className="me-2 fs-1 text-secondary" />
+                    <span className="wd-first-name">{user.firstName}</span>{" "}
+                    <span className="wd-last-name">{user.lastName}</span>
+                  </>
+                )}
+              </td>
+              <td className="wd-login-id">{user.loginId}</td>
+              <td className="wd-section">{user.section}</td>
+              <td className="wd-role">{user.role}</td>
+              <td className="wd-last-activity">{user.lastActivity}</td>
+              <td className="wd-total-activity">{user.totalActivity}</td>
+            </tr>
+          ))}
         </tbody>
       </table>
     </div>
