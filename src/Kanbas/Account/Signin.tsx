@@ -4,6 +4,7 @@ import { setCurrentUser } from "./reducer";
 import { useDispatch } from "react-redux";
 // import * as db from "../Database";
 import * as client from "./client";
+export const REMOTE_SERVER = process.env.REACT_APP_REMOTE_SERVER || "http://localhost:4000";
 
 export default function Signin() {
   const [credentials, setCredentials] = useState<any>({});

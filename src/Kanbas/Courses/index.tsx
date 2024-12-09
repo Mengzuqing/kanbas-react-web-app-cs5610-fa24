@@ -8,6 +8,11 @@ import { FaAlignJustify } from "react-icons/fa";
 import PeopleTable from "./People/Table";
 import * as courseClient from "./client";
 import { useEffect, useState } from "react";
+import Quizzes from "./Quizzes";
+import QuizDetailEditor from "./Quizzes/QuizDetailEditor";
+import TakeQuiz from "./Quizzes/TakeQuiz";
+import TakingQuiz from "./Quizzes/TakingQuiz";
+import ReviewQuiz from "./Quizzes/ReviewQuiz";
 
 export default function Courses({ courses }: { courses: any[] }) {
   const { cid } = useParams();
@@ -51,9 +56,13 @@ export default function Courses({ courses }: { courses: any[] }) {
             <Route path="/Zoom" element={<h2>Zoom</h2>} />
             <Route path="/Assignments" element={<Assignments />} />
             <Route path="/Assignments/:aid" element={<AssignmentEditor />} />
-            <Route path="/Quizzes" element={<h2>Quizzes</h2>} />
+            <Route path="/Quizzes" element={<Quizzes />} />
+            <Route path="/Quizzes/:qid" element={<QuizDetailEditor />} />
+            <Route path="/Quizzes/:qid/takeQuiz" element={<TakeQuiz />} />
+            <Route path="/Quizzes/:qid/takingQuiz" element={<TakingQuiz />} />
+            <Route path="/Quizzes/:qid/reviewQuiz" element={<ReviewQuiz />} />
             <Route path="/Grades" element={<h2>Grades</h2>} />
-            <Route path="/People" element={<PeopleTable users={users}/>} />
+            <Route path="/People" element={<PeopleTable users={users} />} />
           </Routes>
         </div>
       </div>

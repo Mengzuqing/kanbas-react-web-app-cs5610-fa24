@@ -76,119 +76,71 @@ export default function Assignments() {
             </div>
 
             <ul className="wd-assignment-list list-group list-group-flush">
-              {assignments
-                .map((assign: any) => (
-                  <li
-                    key={assign._id}
-                    className="wd-assignment-list-item list-group-item p-4 border-bottom"
-                  >
-                    <div className="d-flex align-items-center">
-                      <div className="d-flex align-items-center flex-nowrap me-3">
-                        <BsGripVertical className="fs-4 text-secondary" />
-                        <MdOutlineAssignment style={{ color: "green" }} />
-                      </div>
-                      <div className="flex-grow-1">
-                        <a
-                          className="wd-assignment-link text-dark"
-                          href={`#/Kanbas/Courses/${cid}/Assignments/${assign._id}`}
-                        >
-                          <b>{assign.title}</b>
-                        </a>
-                        <div className="text-muted mt-1">
-                          <span style={{ color: "red" }}>Multiple Modules</span>{" "}
-                          | <b>Not available until</b>{" "}
-                          {format(new Date(assign.fromDate), "MMM d")} at
-                          12:00am | <b>Due</b>{" "}
-                          {format(new Date(assign.dueDate), "MMM d")} at 11:59pm
-                          | {assign.points} pts
-                        </div>
-                      </div>
-                      <div className="d-flex align-items-center flex-nowrap">
-                        {currentUser.role === "FACULTY" ? (
-                          <FaTrash
-                            onClick={() => handleDeleteClick(assign._id)}
-                            className="text-danger fs-5 me-2"
-                          />
-                        ) : (
-                          ""
-                        )}
-                        {assignmentToDelete === assign._id && (
-                          <div className="confirm-dialog-overlay">
-                            <div className="confirm-dialog">
-                              <p>
-                                Are you sure you want to remove this assignment?
-                              </p>
-                              <button
-                                onClick={() => confirmDelete(assign._id)}
-                                className="btn btn-danger me-2"
-                              >
-                                Yes
-                              </button>
-                              <button
-                                onClick={cancelDelete}
-                                className="btn btn-secondary"
-                              >
-                                No
-                              </button>
-                            </div>
-                          </div>
-                        )}
-                        <FaCheckCircle
-                          style={{ top: "2px" }}
-                          className="text-success"
-                        />
-                        <FaCircle className="text-white fs-6" />
-                        <IoEllipsisVertical className="fs-4" />
+              {assignments.map((assign: any) => (
+                <li
+                  key={assign._id}
+                  className="wd-assignment-list-item list-group-item p-4 border-bottom"
+                >
+                  <div className="d-flex align-items-center">
+                    <div className="d-flex align-items-center flex-nowrap me-3">
+                      <BsGripVertical className="fs-4 text-secondary" />
+                      <MdOutlineAssignment style={{ color: "green" }} />
+                    </div>
+                    <div className="flex-grow-1">
+                      <a
+                        className="wd-assignment-link text-dark"
+                        href={`#/Kanbas/Courses/${cid}/Assignments/${assign._id}`}
+                      >
+                        <b>{assign.title}</b>
+                      </a>
+                      <div className="text-muted mt-1">
+                        <span style={{ color: "red" }}>Multiple Modules</span> |{" "}
+                        <b>Not available until</b>{" "}
+                        {format(new Date(assign.fromDate), "MMM d")} at 12:00am
+                        | <b>Due</b> {format(new Date(assign.dueDate), "MMM d")}{" "}
+                        at 11:59pm | {assign.points} pts
                       </div>
                     </div>
-                  </li>
-                ))}
-
-              {/* <li className="wd-assignment-list-item list-group-item p-4 border-bottom">
-                                <div className="d-flex align-items-center">
-                                    <div className="d-flex align-items-center flex-nowrap me-3">
-                                        <BsGripVertical className="fs-4 text-secondary" />
-                                        <MdOutlineAssignment style={{ color: 'green' }} />
-                                    </div>
-                                    <div className="flex-grow-1">
-                                        <a className="wd-assignment-link text-dark" href="#/Kanbas/Courses/1234/Assignments/123">
-                                            <b>A2</b>
-                                        </a>
-                                        <div className="text-muted mt-1">
-                                            <span style={{ color: 'red' }}>Multiple Modules</span> | <b>Not available until</b> May 13 at 12:00am | <b>Due</b> May 20 at 11:59pm | 100 pts
-                                        </div>
-                                    </div>
-                                    <div className="d-flex align-items-center flex-nowrap">
-                                        <FaCheckCircle style={{ top: "2px" }}
-                                            className="text-success" />
-                                        <FaCircle className="text-white fs-6" />
-                                        <IoEllipsisVertical className="fs-4" />
-                                    </div>
-                                </div>
-                            </li>
-
-                            <li className="wd-assignment-list-item list-group-item p-4 border-bottom">
-                                <div className="d-flex align-items-center">
-                                    <div className="d-flex align-items-center flex-nowrap me-3">
-                                        <BsGripVertical className="fs-4 text-secondary" />
-                                        <MdOutlineAssignment style={{ color: 'green' }} />
-                                    </div>
-                                    <div className="flex-grow-1">
-                                        <a className="wd-assignment-link text-dark" href="#/Kanbas/Courses/1234/Assignments/123">
-                                            <b>A3</b>
-                                        </a>
-                                        <div className="text-muted mt-1">
-                                            <span style={{ color: 'red' }}>Multiple Modules</span> | <b>Not available until</b> May 20 at 12:00am | <b>Due</b> May 27 at 11:59pm | 100 pts
-                                        </div>
-                                    </div>
-                                    <div className="d-flex align-items-center flex-nowrap">
-                                        <FaCheckCircle style={{ top: "2px" }}
-                                            className="text-success" />
-                                        <FaCircle className="text-white fs-6" />
-                                        <IoEllipsisVertical className="fs-4" />
-                                    </div>
-                                </div>
-                            </li> */}
+                    <div className="d-flex align-items-center flex-nowrap">
+                      {currentUser.role === "FACULTY" ? (
+                        <FaTrash
+                          onClick={() => handleDeleteClick(assign._id)}
+                          className="text-danger fs-5 me-2"
+                        />
+                      ) : (
+                        ""
+                      )}
+                      {assignmentToDelete === assign._id && (
+                        <div className="confirm-dialog-overlay">
+                          <div className="confirm-dialog">
+                            <p>
+                              Are you sure you want to remove this assignment?
+                            </p>
+                            <button
+                              onClick={() => confirmDelete(assign._id)}
+                              className="btn btn-danger me-2"
+                            >
+                              Yes
+                            </button>
+                            <button
+                              onClick={cancelDelete}
+                              className="btn btn-secondary"
+                            >
+                              No
+                            </button>
+                          </div>
+                        </div>
+                      )}
+                      <FaCheckCircle
+                        style={{ top: "2px" }}
+                        className="text-success"
+                      />
+                      <FaCircle className="text-white fs-6" />
+                      <IoEllipsisVertical className="fs-4" />
+                    </div>
+                  </div>
+                </li>
+              ))}
             </ul>
           </li>
         </ul>
